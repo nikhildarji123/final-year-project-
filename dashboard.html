@@ -9,10 +9,72 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
 </head>
+
 <body>
-    <nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
         <ul>
-            <li></li>
+            <li><a href="#"><i class="fas fa-folder-open"></i> File a Case</a></li>
+            <li><a href="#"><i class="fas fa-history"></i> Case History</a></li>
+            <li><a href="#"><i class="fas fa-credit-card"></i> Payment History</a></li>
+            <li><a href="#"><i class="fas fa-calendar-alt"></i> Calendar</a></li>
+            <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
         </ul>
-    </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Welcome to CourtLink</h1>
+        <p>Track your cases, make secure payments, and stay updated on your legal matters.</p>
+
+        <!-- Wrap card-container in an anchor tag to make it clickable -->
+        <a href="target_page.html" style="text-decoration: none; color: inherit;">
+            <div class="card-container">
+                <div class="card">
+                    <h3>Upcoming Hearings</h3>
+                    <p id="hearings">Fetching data...</p>
+                </div>
+                <div class="card">
+                    <h3>Recent Payments</h3>
+                    <p id="payments">Fetching data...</p>
+                </div>
+                <div class="card">
+                    <h3>Case Updates</h3>
+                    <p id="case-updates">Fetching data...</p>
+                </div>
+                <div class="card">
+                    <h3>Lawyer Recommendation</h3>
+                    <p id="lawyer-rec">Fetching data...</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <script>
+        // Simulate Real-time Data Fetching
+        const socket = io.connect('http://localhost:3000'); // Replace with your server URL
+
+        // Fetch upcoming hearings
+        socket.on('hearings', (data) => {
+            document.getElementById('hearings').textContent = data.hearings;
+        });
+
+        // Fetch recent payments
+        socket.on('payments', (data) => {
+            document.getElementById('payments').textContent = data.payments;
+        });
+
+        // Fetch case updates
+        socket.on('caseUpdates', (data) => {
+            document.getElementById('case-updates').textContent = data.updates;
+        });
+
+        // Fetch lawyer recommendations
+        socket.on('lawyerRecommendation', (data) => {
+            document.getElementById('lawyer-rec').textContent = data.recommendation;
+        });
+    </script>
 </body>
+
+</html>
