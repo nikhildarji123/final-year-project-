@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+</head>
+<body>
+    <h1>Profile</h1>
+
+    <div id="profileDetails">
+        <p><strong>Email:</strong> <span id="userEmail"></span></p>
+    </div>
+
+    <a href="edit_profile.html">Edit Profile</a>
+
+    <script>
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        if (user && user.email) {
+            document.getElementById('userEmail').textContent = user.email;
+        } else {
+            window.location.href = 'signin.html'; // Redirect to sign-in if not logged in
+        }
+    </script>
+</body>
+</html>

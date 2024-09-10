@@ -132,6 +132,26 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('signinForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Mock user data for demonstration
+            const mockUser = {
+                email: 'user@example.com',
+                password: 'password123' // In reality, you'd compare hashed passwords
+            };
+
+            if (email === mockUser.email && password === mockUser.password) {
+                localStorage.setItem('user', JSON.stringify({ email: mockUser.email }));
+                window.location.href = 'profile.html';
+            } else {
+                document.getElementById('error').textContent = 'Invalid email or password.';
+            }
+        });
+    </script>
 </body>
 </html>
