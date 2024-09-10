@@ -27,7 +27,7 @@ connection.connect(err => {
 });
 
 // Route to handle data from the front-end
-app.post('database', (req, res) => {
+app.post('database.sql', (req, res) => {
   const { name, email, password } = req.body;
   const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
 
@@ -44,4 +44,18 @@ app.post('database', (req, res) => {
 // Start server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+});
+
+// Route to get all users
+app.get('database.sql', (req, res) => {
+  const query = 'SELECT * FROM users';
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching users:', err.stack);
+      res.status(500).send('Error fetching users');
+      return;
+    }
+    res.json(results);
+  });
 });
