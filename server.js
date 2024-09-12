@@ -4,58 +4,75 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = "https://nikhildarji123.github.io/final-year-project-/index.html";
-
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// MySQL connection
-const connection = mysql.createConnection({
-  host: 'localhost:3306',
-  user: 'root',
-  password: 'nikhil@123',
-  database: 'your_database_name'
+// Database connection
+const db = mysql.createConnection({
+    host: 'localhost:3306',
+    user: 'root',
+    password: 'nikhil@123',
+    database: 'courtlink_db'
 });
 
-connection.connect(err => {
-  if (err) {
-    console.error('Error connecting to the database:', err.stack);
-    return;
-  }
-  console.log('Connected to the database.');
-});
-
-// Route to handle data from the front-end
-app.post('database.sql', (req, res) => {
-  const { name, email, password } = req.body;
-  const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
-
-  connection.query(query, [name, email, password], (err, result) => {
+db.connect((err) => {
     if (err) {
-      console.error('Error inserting user:', err.stack);
-      res.status(500).send('Error inserting user');
-      return;
+        console.error('Error connecting to MySQL: ', err);
+    } else {
+        console.log('Connected to MySQL database');
     }
-    res.send('User added successfully');
-  });
 });
 
-// Start server
+// Routes
+
+// Get user dashboard data (cases, payments, etc.)
+app.get('/dashboard/:userId', (req, res) => {
+    const userId = req.params.userId;
+    const dashboardData = {};
+
+    // Fetch upcoming hearings
+    const hearingsQuery = 'SELECT * FROM hearings WHERE user_id = ?';
+    db.query(hearingsQuery, [userId], (err, results) => {
+        if (err) throw err;
+        dashboardData.hearings = results;
+
+        // Fetch recent payments
+        const paymentsQuery = 'SELECT * FROM payments WHERE user_id = ?';
+        db.query(paymentsQuery, [userId], (err, paymentsResults) => {
+            if (err) throw err;
+            dashboardData.payments = paymentsResults;
+
+            // Fetch case updates
+            const updatesQuery = 'SELECT * FROM case_updates WHERE user_id = ?';
+            db.query(updatesQuery, [userId], (err, updatesResults) => {
+                if (err) throw err;
+                dashboardData.updates = updatesResults;
+
+                // Fetch lawyer recommendations
+                const lawyerQuery = 'SELECT * FROM lawyers WHERE field_of_expertise = ?';
+                db.query(lawyerQuery, ['relevant field'], (err, lawyerResults) => {
+                    if (err) throw err;
+                    dashboardData.lawyers = lawyerResults;
+
+                    res.json(dashboardData);
+                });
+            });
+        });
+    });
+});
+
+// Handle profile updates
+app.post('/update-profile', (req, res) => {
+    const { userId, name, email, password } = req.body;
+    const updateQuery = 'UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?';
+    db.query(updateQuery, [name, email, password, userId], (err, result) => {
+        if (err) throw err;
+        res.send('Profile updated successfully');
+    });
+});
+
+// Server listening
+const port = 3000;
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-
-// Route to get all users
-app.get('database.sql', (req, res) => {
-  const query = 'SELECT * FROM users';
-
-  connection.query(query, (err, results) => {
-    if (err) {
-      console.error('Error fetching users:', err.stack);
-      res.status(500).send('Error fetching users');
-      return;
-    }
-    res.json(results);
-  });
+    console.log(`Server running on port ${port}`);
 });
