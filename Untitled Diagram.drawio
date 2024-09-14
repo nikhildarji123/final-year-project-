@@ -4,8 +4,8 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="Wvlnfc6akxbK0Xw1W7D5-1" value="Orgchart" style="swimlane;startSize=20;horizontal=1;containerType=tree;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};" vertex="1" parent="1">
-          <mxGeometry x="400" y="180" width="280" height="220" as="geometry" />
+        <mxCell id="Wvlnfc6akxbK0Xw1W7D5-1" value="" style="swimlane;startSize=20;horizontal=1;containerType=tree;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};" vertex="1" parent="1">
+          <mxGeometry y="160" width="280" height="220" as="geometry" />
         </mxCell>
         <mxCell id="Wvlnfc6akxbK0Xw1W7D5-2" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;startArrow=none;endArrow=none;rounded=0;curved=0;" edge="1" parent="Wvlnfc6akxbK0Xw1W7D5-1" source="Wvlnfc6akxbK0Xw1W7D5-4" target="Wvlnfc6akxbK0Xw1W7D5-5">
           <mxGeometry relative="1" as="geometry" />
@@ -13,15 +13,15 @@
         <mxCell id="Wvlnfc6akxbK0Xw1W7D5-3" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;startArrow=none;endArrow=none;rounded=0;curved=0;" edge="1" parent="Wvlnfc6akxbK0Xw1W7D5-1" source="Wvlnfc6akxbK0Xw1W7D5-4" target="Wvlnfc6akxbK0Xw1W7D5-6">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <UserObject label="" treeRoot="1" id="Wvlnfc6akxbK0Xw1W7D5-4">
+        <UserObject label="User Registration" treeRoot="1" id="Wvlnfc6akxbK0Xw1W7D5-4">
           <mxCell style="whiteSpace=wrap;html=1;align=center;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};" vertex="1" parent="Wvlnfc6akxbK0Xw1W7D5-1">
             <mxGeometry x="80" y="40" width="120" height="60" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="Wvlnfc6akxbK0Xw1W7D5-5" value="Division" style="whiteSpace=wrap;html=1;align=center;verticalAlign=middle;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};" vertex="1" parent="Wvlnfc6akxbK0Xw1W7D5-1">
+        <mxCell id="Wvlnfc6akxbK0Xw1W7D5-5" value="Login" style="whiteSpace=wrap;html=1;align=center;verticalAlign=middle;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};" vertex="1" parent="Wvlnfc6akxbK0Xw1W7D5-1">
           <mxGeometry x="20" y="140" width="100" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Wvlnfc6akxbK0Xw1W7D5-6" value="Division" style="whiteSpace=wrap;html=1;align=center;verticalAlign=middle;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};" vertex="1" parent="Wvlnfc6akxbK0Xw1W7D5-1">
+        <mxCell id="Wvlnfc6akxbK0Xw1W7D5-6" value="Logout" style="whiteSpace=wrap;html=1;align=center;verticalAlign=middle;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;};" vertex="1" parent="Wvlnfc6akxbK0Xw1W7D5-1">
           <mxGeometry x="160" y="140" width="100" height="60" as="geometry" />
         </mxCell>
       </root>
